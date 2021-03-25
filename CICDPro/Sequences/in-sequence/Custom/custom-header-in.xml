@@ -2,5 +2,11 @@
     <log level="custom">
         <property name="Testing Log" value="******************Hello World Second Time******************"/>
 		<property name="Testing Log" value="******************Hello World Test Second Time******************"/>
+		
+        <property name="Testing Log" value="******************Hello World Second Time******************"/>
+		<property name="Testing Log" value="******************Hello World Test Second Time******************"/>
+		
+        <property name="Testing Log" value="******************Hello World Second Time******************"/>
+		<property name="Testing Log" value="******************Hello World Test Second Time******************"/>
     </log>
 </sequence>
