@@ -2,6 +2,7 @@
     <log level="custom">
         <property name="Testing Log" value="******************Hello World 1 ******************"/>
 		<property name="Testing Log" value="******************Hello World 2 ******************"/>
+		<property name="Testing Log" value="******************Hello World 3 ******************"/>
 		
     </log>
 </sequence>
