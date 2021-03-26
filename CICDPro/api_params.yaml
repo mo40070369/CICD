@@ -6,18 +6,8 @@ environments:
             config:
                 retryTimeOut: $DEV_ENV_PROD_RE_DELAY
                 retryDelay: $DEV_ENV_PROD_RE_TO
-    security:
-      enabled: true
-      type: basic
-      username: admin
-      password: admin
         sandbox:
             url: $DEV_ENV_SAND_URL
-    security:
-      enabled: true
-      type: basic
-      username: admin
-      password: admin
 
 deploy:
   import:
