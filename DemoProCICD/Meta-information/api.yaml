@@ -1,0 +1,20 @@
+id:
+  providerName: admin
+  apiName: DemoCICD
+  version: 1.0.0.1
+description: 'This is a sample server Petstore server.  You can find out more about
+  Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For
+  this sample, you can use the api key `special-key` to test the authorization filters.'
+type: HTTP
+context: /DemoCICD/1.0.0.1
+contextTemplate: /DemoCICD/{version}
+availableTiers:
+- name: Unlimited
+inSequence: custom-header-in
+status: PUBLISHED
+visibility: public
+transports: http,https
+productionUrl: http://localhost:8080
+sandboxUrl: http://localhost:8081
+enableStore: true
+
