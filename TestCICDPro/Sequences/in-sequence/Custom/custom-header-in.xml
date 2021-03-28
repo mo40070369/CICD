@@ -1,12 +1,6 @@
 <sequence xmlns="http://ws.apache.org/ns/synapse" name="custom-header-in">
     <log level="custom">
         <property name="Testing Log" value="******************Hello World 1******************"/>
-		<property name="Testing Log" value="******************Hello World 2******************"/>
-		<property name="Testing Log" value="******************Hello World 3******************"/>
-		<property name="Testing Log" value="******************Hello World 4******************"/>
-		<property name="Testing Log" value="******************Hello World 1******************"/>
-		<property name="Testing Log" value="******************Hello World 2******************"/>
-		<property name="Testing Log" value="******************Hello World 3******************"/>
-		<property name="Testing Log" value="******************Hello World 4******************"/>
+
     </log>
 </sequence>
