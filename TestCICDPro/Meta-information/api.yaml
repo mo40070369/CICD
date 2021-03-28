@@ -8,8 +8,13 @@ description: 'This is a sample server Petstore server.  You can find out more ab
 type: HTTP
 context: /CICD/1.0.0
 contextTemplate: /CICD/{version}
+tags:
+- pet
+- store
+- user
 availableTiers:
 - name: Unlimited
+inSequence: custom-header-in
 status: PUBLISHED
 visibility: public
 transports: http,https
