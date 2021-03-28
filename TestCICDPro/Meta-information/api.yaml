@@ -10,6 +10,7 @@ context: /CICD/1.0.0
 contextTemplate: /CICD/{version}
 availableTiers:
 - name: Unlimited
+inSequence: custom-header-in
 status: PUBLISHED
 visibility: public
 transports: http,https
