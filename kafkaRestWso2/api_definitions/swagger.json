@@ -1,0 +1,371 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Kafka Poc",
+    "description": "Kafka Poc using Rest Proxy api's."
+  },
+  "host": "localhost:8084",
+  "basePath": "/",
+  "x-wso2-throttling-tier": "10kPerMin",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/topics": {
+      "get": {
+        "summary": "Retrive list of Topics.",
+        "description": "Retrive list of Topics.",
+        "operationId": "topics",
+        "tags": [
+          "topics"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/topicsArray"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Un Authorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/topics/restproxy3": {
+      "post": {
+        "summary": "kafka topic summary",
+        "description": "kafka topic description.",
+        "operationId": "restproxy",
+        "tags": [
+          "topics"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Payload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/topicInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/topicOutput"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "UnAuthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/consumers/my_avro_consumergroup": {
+      "post": {
+        "summary": "my_avro_consumergroup",
+        "description": "my_avro_consumergroup",
+        "operationId": "my_avro_consumergroup",
+        "tags": [
+          "topics"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Payload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/consumersInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/consumersOutput"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "UnAuthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "consumersOutput": {
+      "type": "object",
+      "description": "consumersInput",
+      "properties": {
+        "instance_id": {
+          "title": "instance_id",
+          "type": "string",
+          "description": "instance_id",
+          "example": "consumer3"
+        },
+        "base_uri": {
+          "title": "base_uri",
+          "type": "string",
+          "description": "base_uri",
+          "example": "http://rest-proxy-1:8084/consumers/my_avro_consumergroup/instances/consumer3"
+        }
+      }
+    },
+    "consumersInput": {
+      "type": "object",
+      "description": "consumersInput",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "name",
+          "example": "consumer3"
+        },
+        "format": {
+          "title": "format",
+          "type": "string",
+          "description": "format",
+          "example": "format"
+        },
+        "auto.offset.reset": {
+          "title": "auto.offset.reset",
+          "type": "string",
+          "description": "auto.offset.reset",
+          "example": "earliest"
+        }
+      }
+    },
+    "topicsArray": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "_confluent-controlcenter-6-1-1-1-group-aggregate-store-ONE_MINUTE-repartition"
+      },
+      "description": "topicsArray."
+    },
+    "topicInput": {
+      "type": "object",
+      "properties": {
+        "key_schema_id": {
+          "description": "key_schema_id",
+          "type": "integer",
+          "example": 1
+        },
+        "value_schema_id": {
+          "description": "key_schema_id",
+          "type": "integer",
+          "example": 1
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/topicInputIn"
+          }
+        }
+      }
+    },
+    "topicOutput": {
+      "type": "object",
+      "properties": {
+        "offsets": {
+          "title": "offsets",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/topicsOutputArray"
+          }
+        },
+        "key_schema_id": {
+          "title": "key_schema_id",
+          "type": "integer",
+          "example": 1
+        },
+        "value_schema_id": {
+          "title": "value_schema_id",
+          "type": "integer",
+          "example": 2
+        }
+      }
+    },
+    "topicsOutputArray": {
+      "title": "topicsOutputArray",
+      "type": "object",
+      "properties": {
+        "partition": {
+          "title": "partition",
+          "type": "integer",
+          "example": 0
+        },
+        "offset": {
+          "title": "offset",
+          "type": "integer",
+          "example": 11
+        },
+        "error_code": {
+          "title": "error_code",
+          "type": "string",
+          "example": null
+        },
+        "error": {
+          "title": "error",
+          "type": "string",
+          "example": null
+        }
+      }
+    },
+    "topicInputIn": {
+      "type": "object",
+      "description": "informationIn",
+      "properties": {
+        "key": {
+          "title": "key",
+          "type": "integer",
+          "example": 1
+        },
+        "value": {
+          "type": "object",
+          "description": "value",
+          "$ref": "#/definitions/values"
+        }
+      }
+    },
+    "values": {
+      "title": "value",
+      "description": "value",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "description": "customerId",
+          "example": 1
+        },
+        "customerName": {
+          "type": "string",
+          "description": "customerName",
+          "example": "sangeetha"
+        },
+        "height": {
+          "type": "string",
+          "description": "height",
+          "example": 1.16
+        }
+      }
+    }
+  },
+  "x-wso2-auth-header": "Authorization",
+  "x-wso2-cors": {
+    "corsConfigurationEnabled": false,
+    "accessControlAllowOrigins": [
+      "*"
+    ],
+    "accessControlAllowCredentials": false,
+    "accessControlAllowHeaders": [
+      "authorization",
+      "Access-Control-Allow-Origin",
+      "Content-Type",
+      "SOAPAction"
+    ],
+    "accessControlAllowMethods": [
+      "GET",
+      "PUT",
+      "POST",
+      "DELETE",
+      "PATCH",
+      "OPTIONS"
+    ]
+  },
+  "x-wso2-production-endpoints": {
+    "urls": [
+      "https://xbeserve.bedirect.de/soap/wsdl"
+    ],
+    "type": "address"
+  },
+  "x-wso2-sandbox-endpoints": {
+    "urls": [
+      "https://xbeserve.bedirect.de/soap/wsdl"
+    ],
+    "type": "address"
+  },
+  "x-wso2-basePath": "/bedirect/1.0.0",
+  "x-wso2-transports": [
+    "http",
+    "https"
+  ],
+  "x-wso2-application-security": {
+    "security-types": [
+      "oauth2"
+    ],
+    "optional": false
+  },
+  "x-wso2-response-cache": {
+    "enabled": false,
+    "cacheTimeoutInSeconds": 300
+  }
+}
